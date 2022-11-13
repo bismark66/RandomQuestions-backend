@@ -6,7 +6,7 @@ const db = {};
 
 db.fetchQuestions = () => {
   return new Promise((resolve, reject) => {
-    console.log("fetchQuestions was called");
+    //console.log("fetchQuestions was called");
     con.query("SELECT * FROM randomquestions", function (error, results) {
       if (error) reject(error);
       //console.log("show the results of the fetch", results);
@@ -30,12 +30,13 @@ db.postQuestion = ({ Question, Answer, yourAnswer }) => {
 
 db.deleteQuestion = ({ Question }) => {
   return new Promise((resolve, reject) => {
+    console.log(Question + "?");
     console.log("delete was passed");
     con.query(
-      "DELETE FROM randomquestions WHERE Question=?",
-      [Question],
+      "DELETE FROM randomquestions WHERE Question =?",
+      [Question + "?"],
       function (error, results) {
-        if (error) throw error;
+        if (error) reject(error);
         resolve(results);
       }
     );

@@ -34,9 +34,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/:Question", async (req, res) => {
   try {
-    let Question = req.body.Question;
+    console.log("this is the body", req.params.Question);
+    let Question = req.params.Question;
+    console.log("question was called at backend", Question);
     let results = await db.deleteQuestion({ Question });
     res.json(results).status(200);
   } catch (error) {
