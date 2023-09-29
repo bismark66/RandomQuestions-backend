@@ -12,7 +12,7 @@ const con = mysql.createConnection({
 
 con.connect(function () {
   //if (err) throw err;
-  console.log(`connection established at port port 3300`);
+  console.log(`Database connection established at port 3300`);
 });
 
 module.exports = con;

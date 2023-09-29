@@ -6,11 +6,9 @@ const db = {};
 
 db.fetchQuestions = () => {
   return new Promise((resolve, reject) => {
-    //console.log("fetchQuestions was called");
     con.query("SELECT * FROM randomquestions", function (error, results) {
       if (error) reject(error);
-      //console.log("show the results of the fetch", results);
-      resolve(results); //.catch((err) => console.log("this is the error", err));
+      resolve(results);
     });
   });
 };
